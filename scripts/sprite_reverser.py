@@ -13,7 +13,7 @@ def revert_sprite(sprite):
     if len(fusion_name)==2:
         reverse_fusion_name = fusion_name[1] + "." + fusion_name[0]
         fusions.append(reverse_fusion_name)
-        copyfile(join(path_custom, sprite), join(path_reverse, "r"+reverse_fusion_name+".png"))
+        copyfile(join(path_custom, sprite), join(path_reverse, "r" + reverse_fusion_name + ".png"))
         print(reverse_fusion_name)
     else:
         print(fusion_name)

@@ -199,7 +199,7 @@ def test_transparency(element, image, pixels):
             weird_amount = detect_weird_transparency(image, pixels)
             if weird_amount > WEIRD_LIMIT:
                 # image.show()
-                image.save(join(path_analysis, "e" + element))
+                image.save(join(path_analysis, "a" + element))
                 print("[TRANSPARENCY ERROR]", weird_amount)
                 return_value = 1
         except Exception as e:
@@ -245,7 +245,7 @@ def is_sprite(element):
     return isfile(join(main_path, element)) and element.endswith(".png")
 
 
-def explore_sprites():
+def analyze_sprites():
     print("[ START ]\n")
     for element in listdir(main_path):
         if is_sprite(element):
@@ -256,4 +256,4 @@ def explore_sprites():
 if __name__ == '__main__':
     if not exists(path_analysis):
         mkdir(path_analysis)
-    explore_sprites()
+    analyze_sprites()
