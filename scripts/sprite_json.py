@@ -2,9 +2,9 @@ from os import listdir
 from os.path import isfile, join
 import json
 
+
 path_custom = "CustomBattlers"
-path_json = "scripts"
-json_file_name = "aegide_sprites.json"
+json_file_name = "scripts/aegide_sprites.json"
 
 
 def is_sprite(element):
@@ -17,7 +17,7 @@ def build_json():
             fusions.append(element[:-4])
             print(element[:-4])
     json_str = json.dumps(fusions, separators=(',\n', ': '))
-    json_file = open(path_json + "/" + json_file_name, "w")
+    json_file = open(json_file_name, "w")
     json_file.write(json_str)
     json_file.close()
 
