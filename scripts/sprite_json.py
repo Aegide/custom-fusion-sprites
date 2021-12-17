@@ -10,6 +10,7 @@ json_file_name = "scripts/aegide_sprites.json"
 def is_sprite(element):
     return isfile(join(path_custom, element)) and element.endswith(".png")
 
+
 def build_json():
     fusions = []
     for element in listdir(path_custom):
