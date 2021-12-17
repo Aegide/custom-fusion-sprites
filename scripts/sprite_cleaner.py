@@ -20,7 +20,7 @@ def discard_changes(fusion_id):
 
 def clean_repo():
     # I prefer the alt instead of the official version 
-    with open('scripts/ignore_sprites.json') as json_file:
+    with open("scripts/ignore_sprites.json") as json_file:
         sprites = json.load(json_file)
         print(" ")
         for sprite in sprites:
@@ -29,5 +29,5 @@ def clean_repo():
         print("\nDONE")
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     clean_repo()
