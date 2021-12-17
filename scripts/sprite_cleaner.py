@@ -7,25 +7,47 @@ from pathlib import Path
 
 cwd = os.getcwd()
 repo = git.Repo(cwd)
-git_checkout = "git checkout -q -- "
+cmd_checkout = "git checkout -q -- "
+cmd_clean = "git clean -f "
 
 
-def discard_changes(fusion_id):
+preference  = "preference"   # personnal design preference
+mistake     = "mistake"      # should be fixed
+anomaly     = "anomaly"      # should be removed
+active_categories = [anomaly]
+
+
+def git_clean(fusion_id):
     filename = fusion_id + ".png"
     filepath =  pathlib.Path(os.path.join(cwd, "CustomBattlers", filename)).as_posix()
-    git_command = git_checkout + filepath
-    print(fusion_id)
+    git_command = cmd_clean + filepath
     repo.git.execute(git_command)
+
+
+def git_checkout(fusion_id):
+    filename = fusion_id + ".png"
+    filepath =  pathlib.Path(os.path.join(cwd, "CustomBattlers", filename)).as_posix()
+    git_command = cmd_checkout + filepath
+    repo.git.execute(git_command)
+
+
+def handle_sprites(category, sprites):
+    if category in active_categories:
+        for sprite in sprites:
+            print(sprite)
+            if(category == anomaly):
+                git_clean(sprite)
+            else:
+                git_checkout(sprite)
 
 
 def clean_repo():
     # I prefer the alt instead of the official version 
     with open("scripts/ignore_sprites.json") as json_file:
-        sprites = json.load(json_file)
         print(" ")
-        for sprite in sprites:
-            # print(sprite)
-            discard_changes(sprite)
+        categories = json.load(json_file)
+        for category, sprites in categories.items():
+            handle_sprites(category, sprites)
         print("\nDONE")
 
 
