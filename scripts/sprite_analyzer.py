@@ -43,10 +43,10 @@ def show_sprite(element):
 
 def apply_borders(pixels):
     for i in range(0, 288): 
-            pixels[i, 0] = PINK
-            pixels[i, 287] = PINK
-            pixels[0, i] = PINK
-            pixels[287, i] = PINK
+        pixels[i, 0] = PINK
+        pixels[i, 287] = PINK
+        pixels[0, i] = PINK
+        pixels[287, i] = PINK
 
 
 def have_normal_transparency(pixels, i, j):
