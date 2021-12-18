@@ -235,7 +235,7 @@ def analyze_sprite(element):
         image.close()
 
         if error_amount > 0:
-            print(">>",fusion_name, "\n")
+            print(">>", fusion_name, "\n")
 
         elif VERBOSE_MODE:
             print(fusion_name)
