@@ -14,7 +14,7 @@ cmd_clean = "git clean -f "
 preference  = "preference"   # personnal design preference
 mistake     = "mistake"      # should be fixed
 anomaly     = "anomaly"      # should be removed
-active_categories = [anomaly]
+active_categories = [preference, mistake, anomaly]
 
 
 def git_clean(fusion_id):
