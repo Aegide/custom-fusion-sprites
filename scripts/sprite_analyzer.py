@@ -14,18 +14,18 @@ WHITE = (255, 255, 255)
 
 MEGA_COLOR_LIMIT = 10000
 COLOR_LIMIT = 1000
-WEIRD_LIMIT = 1000
+TRANSPARENCY_LIMIT = 1000
 
 main_path = "CustomBattlers"
 path_analysis = "CustomBattlersAnalysis"
 bad_fusions = []
-
 
 TEST_SIZE = False
 TEST_PALETTE = False
 TEST_HIGH_DIVERSITY = False
 TEST_MASSIVE_DIVERSITY = False
 TEST_TRANSPARENCY = True
+
 VERBOSE_MODE = False
 
 
@@ -196,11 +196,11 @@ def test_transparency(element, image, pixels):
     return_value = 0
     if TEST_TRANSPARENCY:
         try:
-            weird_amount = detect_weird_transparency(image, pixels)
-            if weird_amount > WEIRD_LIMIT:
+            transparency_amount = detect_weird_transparency(image, pixels)
+            if transparency_amount > TRANSPARENCY_LIMIT:
                 # image.show()
                 image.save(join(path_analysis, "a" + element))
-                print("[TRANSPARENCY ERROR]", weird_amount)
+                print("[TRANSPARENCY ERROR]", transparency_amount)
                 return_value = 1
         except Exception as e:
             if e == IndexError:
