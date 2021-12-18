@@ -247,9 +247,9 @@ def is_sprite(element):
 
 def analyze_sprites():
     print("[ START ]\n")
-    for element in listdir(main_path):
-        if is_sprite(element):
-            analyze_sprite(element)
+    for filename in listdir(main_path):
+        if is_sprite(filename):
+            analyze_sprite(filename)
     print("[ END ]")
 
 
