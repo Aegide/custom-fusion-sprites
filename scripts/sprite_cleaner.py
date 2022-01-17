@@ -11,10 +11,13 @@ cmd_checkout = "git checkout -q -- "
 cmd_clean = "git clean -f "
 
 
-preference  = "preference"   # personnal design preference
+preference  = "preference"   # personnally prefered
+rejected    = "rejected"     # personnally rejected
+
 mistake     = "mistake"      # should be fixed
 anomaly     = "anomaly"      # should be removed
-active_categories = [preference, mistake, anomaly]
+
+active_categories = [preference]
 
 
 def git_clean(fusion_id):
