@@ -13,11 +13,12 @@ cmd_clean = "git clean -f "
 
 preference  = "preference"   # personnally prefered
 rejected    = "rejected"     # personnally rejected
-
 mistake     = "mistake"      # should be fixed
 anomaly     = "anomaly"      # should be removed
+supplement  = "supplement"   # personnally added
 
-active_categories = [preference]
+
+active_categories = [preference, rejected, mistake, anomaly, supplement]
 
 
 def git_clean(fusion_id):
