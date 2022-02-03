@@ -9,7 +9,7 @@ cwd = os.getcwd()
 repo = git.Repo(cwd)
 cmd_checkout = "git checkout -q -- "
 cmd_clean = "git clean -f "
-
+max_count = 5
 
 preference  = "preference"   # personnally prefered
 rejected    = "rejected"     # personnally rejected
@@ -35,18 +35,35 @@ def git_checkout(fusion_id):
     repo.git.execute(git_command)
 
 
-def handle_sprites(category, sprites):
+def handle_print(count, spritename):
+    if count == 0:
+        print(spritename, end='')
+    elif count == max_count:
+        print(", " + spritename, end='\n')
+        count = -1
+    else:
+        print(", " + spritename, end='')
+    return count + 1
+
+
+def handle_git(category:str, spritename:str):
+    if(category == anomaly):
+        git_clean(spritename)
+    else:
+        git_checkout(spritename)
+
+
+def handle_sprites(category:str, sprites):
+    count = 0
+    print(category.upper())
     if category in active_categories:
-        for sprite in sprites:
-            print(sprite)
-            if(category == anomaly):
-                git_clean(sprite)
-            else:
-                git_checkout(sprite)
+        for spritename in sprites:
+            count = handle_print(count, spritename)
+            handle_git(category, spritename)
+    print("\n")
 
 
-def clean_repo():
-    # I prefer the alt instead of the official version 
+def clean_custom_repo():
     with open("scripts/ignore_sprites.json") as json_file:
         print(" ")
         categories = json.load(json_file)
@@ -56,4 +73,4 @@ def clean_repo():
 
 
 if __name__ == "__main__":
-    clean_repo()
+    clean_custom_repo()
