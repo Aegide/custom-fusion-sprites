@@ -5,11 +5,14 @@ import json
 from pathlib import Path
 
 
+
+is_loud = False
+max_count = 5
 cwd = os.getcwd()
 repo = git.Repo(cwd)
 cmd_checkout = "git checkout -q -- "
 cmd_clean = "git clean -f "
-max_count = 5
+
 
 preference  = "preference"   # personnally prefered
 rejected    = "rejected"     # personnally rejected
@@ -18,14 +21,23 @@ anomaly     = "anomaly"      # should be removed
 supplement  = "supplement"   # personnally added
 
 
-active_categories = [preference, rejected, mistake, anomaly, supplement]
+# active_categories = [preference, rejected, mistake, anomaly, supplement]
+active_categories = [anomaly] # mistake
+
+
+def delete(filepath):
+    try:
+        repo.git.execute(f"rm {filepath}")
+    except Exception as e:
+        pass
 
 
 def git_clean(fusion_id):
     filename = fusion_id + ".png"
     filepath =  pathlib.Path(os.path.join(cwd, "CustomBattlers", filename)).as_posix()
-    git_command = cmd_clean + filepath
-    repo.git.execute(git_command)
+    # git_command = cmd_clean + filepath
+    # repo.git.execute(git_command)
+    delete(filepath)
 
 
 def git_checkout(fusion_id):
@@ -37,12 +49,15 @@ def git_checkout(fusion_id):
 
 def handle_print(count, spritename):
     if count == 0:
-        print(spritename, end='')
+        if is_loud:
+            print(spritename, end='')
     elif count == max_count:
-        print(", " + spritename, end='\n')
+        if is_loud:
+            print(", " + spritename, end='\n')
         count = -1
     else:
-        print(", " + spritename, end='')
+        if is_loud:
+            print(", " + spritename, end='')
     return count + 1
 
 
