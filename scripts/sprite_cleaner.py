@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 
-is_loud = False
+is_loud = True
 max_count = 5
 cwd = os.getcwd()
 repo = git.Repo(cwd)
@@ -21,8 +21,9 @@ anomaly     = "anomaly"      # should be removed
 supplement  = "supplement"   # personnally added
 
 
+active_categories = [preference, mistake, anomaly, supplement]
 # active_categories = [preference, rejected, mistake, anomaly, supplement]
-active_categories = [anomaly] # mistake
+# active_categories = [anomaly] # mistake
 
 
 def delete(filepath):
