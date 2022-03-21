@@ -20,9 +20,8 @@ mistake     = "mistake"      # should be fixed
 anomaly     = "anomaly"      # should be removed
 supplement  = "supplement"   # personnally added
 
-
-active_categories = [preference, mistake, anomaly, supplement]
 # active_categories = [preference, rejected, mistake, anomaly, supplement]
+active_categories = [preference, rejected, mistake, anomaly, supplement]
 # active_categories = [anomaly] # mistake
 
 
