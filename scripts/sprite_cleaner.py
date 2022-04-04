@@ -14,11 +14,11 @@ cmd_checkout = "git checkout -q -- "
 cmd_clean = "git clean -f "
 
 
-preference  = "preference"   # personnally prefered
-rejected    = "rejected"     # personnally rejected
+preference  = "preference"   # personally preferred
+rejected    = "rejected"     # personally rejected
 mistake     = "mistake"      # should be fixed
 anomaly     = "anomaly"      # should be removed
-supplement  = "supplement"   # personnally added
+supplement  = "supplement"   # personally added
 
 # active_categories = [preference, rejected, mistake, anomaly, supplement]
 active_categories = [preference, rejected, mistake, anomaly, supplement]
