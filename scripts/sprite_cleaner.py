@@ -2,7 +2,6 @@ import os
 import pathlib
 import git
 import json
-from pathlib import Path
 
 
 
@@ -20,9 +19,17 @@ mistake     = "mistake"      # should be fixed
 anomaly     = "anomaly"      # should be removed
 supplement  = "supplement"   # personally added
 
-# active_categories = [preference, rejected, mistake, anomaly, supplement]
-active_categories = [preference, rejected, mistake, anomaly, supplement]
-# active_categories = [anomaly] # mistake
+
+all_categories = [preference, rejected, mistake, anomaly, supplement]
+
+
+rejected_only = [preference, mistake, anomaly, supplement]
+mistake_only = [preference, rejected, anomaly, supplement]
+anomaly_only = [preference, rejected, mistake, supplement]
+supplement_only = [preference, rejected, mistake, anomaly]
+
+
+active_categories = all_categories
 
 
 def delete(filepath):
