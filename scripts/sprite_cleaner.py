@@ -32,11 +32,10 @@ supplement_only = [preference, rejected, mistake, anomaly]
 active_categories = all_categories
 
 
-def delete(filepath):
-    try:
-        repo.git.execute(f"rm {filepath}")
-    except Exception as e:
-        pass
+def delete(filepath:str):
+    # repo.git.execute(f"rm {filepath}")
+    if os.path.isfile(filepath):
+        os.remove(filepath)
 
 
 def git_clean(fusion_id):
