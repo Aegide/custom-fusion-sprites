@@ -1,15 +1,15 @@
 import os
 import pathlib
-import git
+import git #GitPython
 import json
-
+from os.path import exists
 
 
 is_loud = True
 max_count = 5
 cwd = os.getcwd()
 repo = git.Repo(cwd)
-cmd_checkout = "git checkout -q -- "
+cmd_checkout = "git checkout -- "
 cmd_clean = "git clean -f "
 
 
@@ -50,8 +50,9 @@ def git_checkout(fusion_id):
     filename = fusion_id + ".png"
     filepath =  pathlib.Path(os.path.join(cwd, "CustomBattlers", filename)).as_posix()
     git_command = cmd_checkout + filepath
-    repo.git.execute(git_command)
-
+    # repo.git.execute(git_command)
+    os.system(git_command)
+    
 
 def handle_print(count, spritename):
     if count == 0:
@@ -68,7 +69,7 @@ def handle_print(count, spritename):
 
 
 def handle_git(category:str, spritename:str):
-    if(category == anomaly):
+    if category == anomaly:
         git_clean(spritename)
     else:
         git_checkout(spritename)
